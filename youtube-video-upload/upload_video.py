@@ -89,10 +89,12 @@ def resumable_upload(request):
     retry = 0
     while response is None:
         try:
+            print()
             print( 'Uploading file...')
             status, response = request.next_chunk()
             if response is not None:
                 if 'id' in response:
+                    print()
                     print( 'Video id "%s" was successfully uploaded.' % response['id'])
                 else:
                     exit('The upload failed with an unexpected response: %s' % response)

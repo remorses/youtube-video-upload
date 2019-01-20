@@ -5,6 +5,8 @@ from .support import dotdict
 from .upload_video import upload_video
 from .get_credentials import get_credentials
 from google.oauth2.credentials import Credentials
+from .get_category_number import get_category_number
+from colorama import init, Fore
 from pathlib import Path
 
 
@@ -56,6 +58,10 @@ def upload_from_options(options):
         raise Exception('neither secrets or credentials')
 
     for video_options in options.videos:
+
+        if 'category' in video_options:
+            video_options['category'] = get_category_number(video_options['category'])
+
         try:
             upload_video(
                 credentials,
@@ -63,7 +69,8 @@ def upload_from_options(options):
             )
 
         except Exception as e:
-            print(e)
+            init(autoreset=True)
+            print(Fore.RED + str(e))
 
     return dump_credentials(credentials)
 

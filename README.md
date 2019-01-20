@@ -11,7 +11,7 @@ videos:
         title: testing this amazing script!
         file:  tests/glitch.mp4
         description: sdf
-        category: 22 
+        category: Music
         privacy: private
         tags:
             - shit

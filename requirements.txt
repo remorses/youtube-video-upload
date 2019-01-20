@@ -1,1 +1,3 @@
 pyyaml
+colorama
+google-

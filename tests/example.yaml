@@ -3,13 +3,14 @@
 
 videos:
     -
-        title: testing this amazing script!
-        file:  tests/glitch.mp4
+        title:       testing this amazing script!
+        file:        tests/glitch.mp4
         description: sdf
-        category: 22
-        privacy: private
+        category:    Music
+        privacy:     private
         tags:
             - shit
             - holy
 
-secrets_path: tests/user_secrets.json
+secrets_path:        tests/client_secrets.json
+credentials_path:    tests/credentials.json
