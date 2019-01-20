@@ -5,6 +5,7 @@ from .support import dotdict
 from .upload_video import upload_video
 from .get_credentials import get_credentials
 from google.oauth2.credentials import Credentials
+from pathlib import Path
 
 
 def upload_from_options(options):
@@ -32,15 +33,18 @@ def upload_from_options(options):
     config = None
 
     if 'credentials' in options:
-        credentials = Credentials.from_authorized_user_info(options.credentials)
+        credentials = Credentials.from_authorized_user_info(json.load(options.credentials))
 
-    elif 'credentials_path' in options:
+    elif 'credentials_path' in options and Path(options.credentials_path).exists():
+        credentials = Credentials.from_authorized_user_file(options.credentials_path)
+
+    elif Path('./credentials.json').exists():
         credentials = Credentials.from_authorized_user_file(options.credentials_path)
 
     elif 'config' in options:
         config = json.loads(options.config)
 
-    elif 'config_path' in options:
+    elif 'config_path' in options and Path(options.config_path).exists():
         file = open(options.config_path, 'r')
         config = json.load(file.read())
         file.close()
@@ -48,14 +52,10 @@ def upload_from_options(options):
     if not credentials and config:
         credentials = get_credentials(config)
         save_credentials(credentials, options.credentials_path or "./credentials.json")
-    else:
+    elif not credentials and not config:
         raise Exception('neither config or credentials')
 
     for video_options in options.videos:
-
-        print(credentials)
-
-
         try:
             upload_video(
                 credentials,

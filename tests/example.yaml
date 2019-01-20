@@ -12,7 +12,7 @@ videos:
             - shit
             - holy
 
-
+credentials_path: tests/credentials.json
 
 config: |
     {
