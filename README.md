@@ -9,7 +9,7 @@ To upload the video in `tests/glitch.mp4` simply write a yaml file like this in 
 videos:
     -
         title: testing this amazing script!
-        file:  tests/glitch.mp4
+        file:  tests/video.mp4
         description: sdf
         category: Music
         privacy: private

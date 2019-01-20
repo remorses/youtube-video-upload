@@ -4,7 +4,7 @@
 videos:
     -
         title:       testing this amazing script!
-        file:        tests/glitch.mp4
+        file:        tests/video.mp4
         description: sdf
         category:    Music
         privacy:     private
