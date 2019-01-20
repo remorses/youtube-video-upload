@@ -1,2 +1,2 @@
 
-python -m youtube-video-upload tests/glitch.mp4
+python -m youtube-video-upload tests/example.yaml

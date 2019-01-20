@@ -1,3 +1,7 @@
 pyyaml
 colorama
-google-
+google-api-python-client
+requests
+google-auth
+google-auth-oauthlib
+google-auth-httplib2

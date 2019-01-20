@@ -1,9 +1,6 @@
-try:
-    #import urllib2
-    from urllib2 import urlopen
-    import urllib
-except ImportError:
-    from urllib.request import urlopen
+
+import urllib
+from urllib.request import urlopen
 import json
 
 URL = "https://www.googleapis.com/youtube/v3/videoCategories"

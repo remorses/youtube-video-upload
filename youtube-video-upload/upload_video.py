@@ -1,6 +1,4 @@
-#!/usr/bin/python
 
-import os
 import random
 import time
 from http import client
