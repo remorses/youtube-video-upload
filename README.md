@@ -1,4 +1,4 @@
-# youtube-uploader
+## youtube-video-upload
 
 Upload videos starting from a yaml file.
 
