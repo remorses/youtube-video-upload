@@ -33,7 +33,7 @@ Using `credentials_path` the credentials will be created there even if that path
 
 Install dependencies, python-3.x is needed.
 ```
-pip install requirements.txt
+pip install -U -r requirements.txt
 ```
 
 To use this script you need a `client_secrets.json` to put in `secrets_path`.
