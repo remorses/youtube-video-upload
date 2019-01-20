@@ -31,7 +31,12 @@ Using `credentials_path` the credentials will be created there even if that path
 
 ## Setup
 
-to use this script you need a `client_secrets.json` to put in `secrets_path`
+Install dependencies, python-3.x is needed.
+```
+pip install requirements.txt
+```
+
+To use this script you need a `client_secrets.json` to put in `secrets_path`.
 To get this file:
 1. Create an account on the [Google Developers Console](https://console.developers.google.com)
 1. Register a new app there
