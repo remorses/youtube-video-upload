@@ -35,7 +35,7 @@ def upload_from_options(options):
     secrets = None
 
     if 'credentials' in options:
-        credentials = Credentials.from_authorized_user_info(json.load(options.credentials))
+        credentials = Credentials.from_authorized_user_info(json.loads(options.credentials))
 
     elif 'credentials_path' in options and Path(options.credentials_path).exists():
         credentials = Credentials.from_authorized_user_file(options.credentials_path)
@@ -48,7 +48,7 @@ def upload_from_options(options):
 
     elif 'secrets_path' in options and Path(options.secrets_path).exists():
         file = open(options.secrets_path, 'r')
-        secrets = json.load(file.read())
+        secrets = json.loads(file.read())
         file.close()
 
     if not credentials and secrets:

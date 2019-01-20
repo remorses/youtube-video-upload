@@ -24,7 +24,7 @@ def get_credentials(secrets):
 
     init(autoreset=True)
     print()
-    print(Fore.GREEN + 'Please go to this URL: {}'.format(auth_url))
+    print(Fore.GREEN + 'Please go to this URL: ' + Fore.CYAN + str(auth_url))
 
     # The user will get an authorization code. This code is used to get the
     # access token.

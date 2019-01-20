@@ -1,6 +1,7 @@
 import sys
 import yaml
 import json
+import traceback
 from .upload_from_options import upload_from_options
 from colorama import init, Fore
 
@@ -11,11 +12,11 @@ try:
     new_options = upload_from_options(options)
     yaml_file.close()
 except KeyboardInterrupt:
-    raise
+    pass
 except Exception as e:
     init(autoreset=True)
     print()
-    print(Fore.RED + str(e))
+    print(Fore.RED + traceback.format_exc())
 finally:
     print()
     yaml_file.close()
