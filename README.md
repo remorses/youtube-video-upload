@@ -1,8 +1,8 @@
-## youtube-video-upload
+# youtube-video-upload
 
 Upload videos starting from a yaml file.
 
-### Usage
+## Usage
 
 To upload the video in `tests/glitch.mp4` simply write a yaml file like this in `tests/example.yaml`:
 ```yaml
@@ -29,7 +29,7 @@ If you run this script for the first time it will ask you to go to a url and cop
 After that the script will store the credentials in `credentials_path` or default to `./credentials.json`.
 Using `credentials_path` the credentials will be created there even if that path doesn't exist.
 
-### Setup
+## Setup
 
 to use this script you need a `client_secrets.json` to put in `secrets_path`
 To get this file:
