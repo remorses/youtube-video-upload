@@ -9,8 +9,8 @@ videos:
         category:    Music
         privacy:     private
         tags:
-            - shit
             - holy
+            - shit
 
 secrets_path:        tests/client_secrets.json
 credentials_path:    tests/credentials.json

@@ -1,6 +1,7 @@
 
 import json
 import os
+import requests
 from .support import dotdict
 from .upload_video import upload_video
 from .get_credentials import get_credentials
@@ -8,6 +9,7 @@ from google.oauth2.credentials import Credentials
 from .get_category_number import get_category_number
 from colorama import init, Fore
 from pathlib import Path
+from random import random
 
 
 def upload_from_options(options):
@@ -62,6 +64,13 @@ def upload_from_options(options):
         if 'category' in video_options:
             video_options['category'] = get_category_number(video_options['category'])
 
+        if 'http' in video_options['file']:
+            url = video_options['file']
+            temp_file = './' + str(random())[2:]
+            temp_file = download_video(url, temp_file,)
+            options['file'] = temp_file
+
+
         try:
             upload_video(
                 credentials,
@@ -71,10 +80,20 @@ def upload_from_options(options):
         except Exception as e:
             init(autoreset=True)
             print(Fore.RED + str(e))
+            
+        finally:
+            if temp_file:
+                Path(temp_file).unlink()
 
     return dump_credentials(credentials)
 
-
+def download_video(url, file_path):
+        response = requests.get(url, stream=True)
+        if response.status_code == 200:
+                with open(file_path, 'wb') as f:
+                    for chunk in response:
+                        f.write(chunk)
+        return str(Path(file_path).resolve())
 
 def save_credentials(creds, credentials_path):
 
