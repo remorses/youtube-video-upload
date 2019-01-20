@@ -13,9 +13,9 @@ VALID_PRIVACY_STATUSES = ('public', 'private', 'unlisted')
 
 
 
-def get_credentials(config):
+def get_credentials(secrets):
     flow = Flow.from_client_config(
-        config,
+        secrets,
         scopes=SCOPES,
         redirect_uri='urn:ietf:wg:oauth:2.0:oob')
 

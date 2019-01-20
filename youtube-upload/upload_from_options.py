@@ -30,7 +30,7 @@ def upload_from_options(options):
     options = dotdict(**options)
 
     credentials = None
-    config = None
+    secrets = None
 
     if 'credentials' in options:
         credentials = Credentials.from_authorized_user_info(json.load(options.credentials))
@@ -41,19 +41,19 @@ def upload_from_options(options):
     elif Path('./credentials.json').exists():
         credentials = Credentials.from_authorized_user_file(options.credentials_path)
 
-    elif 'config' in options:
-        config = json.loads(options.config)
+    elif 'secrets' in options:
+        secrets = json.loads(options.secrets)
 
     elif 'secrets_path' in options and Path(options.secrets_path).exists():
         file = open(options.secrets_path, 'r')
-        config = json.load(file.read())
+        secrets = json.load(file.read())
         file.close()
 
-    if not credentials and config:
-        credentials = get_credentials(config)
+    if not credentials and secrets:
+        credentials = get_credentials(secrets)
         save_credentials(credentials, options.credentials_path or "./credentials.json")
-    elif not credentials and not config:
-        raise Exception('neither config or credentials')
+    elif not credentials and not secrets:
+        raise Exception('neither secrets or credentials')
 
     for video_options in options.videos:
         try:
