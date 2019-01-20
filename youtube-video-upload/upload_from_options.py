@@ -66,10 +66,9 @@ def upload_from_options(options):
 
         if 'http' in video_options['file']:
             url = video_options['file']
-            temp_file = './' + str(random())[2:]
+            temp_file = './' + str(random())[2:] + '.mp4'
             temp_file = download_video(url, temp_file,)
-            options['file'] = temp_file
-
+            video_options['file'] = temp_file
 
         try:
             upload_video(
@@ -79,8 +78,9 @@ def upload_from_options(options):
 
         except Exception as e:
             init(autoreset=True)
+            print()
             print(Fore.RED + str(e))
-            
+
         finally:
             if temp_file:
                 Path(temp_file).unlink()
