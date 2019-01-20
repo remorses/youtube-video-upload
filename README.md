@@ -1,6 +1,6 @@
 # youtube-uploader
 
-Upload videos starting from a yaml file, for example having the yaml file configuration:
+Upload videos starting from a yaml file.
 
 ## Usage
 
