@@ -56,7 +56,7 @@ def upload_from_options(options):
     if not credentials and secrets:
         credentials = get_credentials(secrets)
         save_credentials(credentials, options.credentials_path or "./credentials.json")
-        
+
     elif not credentials and not secrets:
         raise Exception('neither secrets or credentials')
 
@@ -83,7 +83,7 @@ def upload_from_options(options):
             print(Fore.RED + str(e))
 
         finally:
-            if temp_file:
+            if 'temp_file' in vars() and temp_file:
                 Path(temp_file).unlink()
 
     return dump_credentials(credentials)
