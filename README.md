@@ -11,17 +11,17 @@ videos:
         title: testing this amazing script!
         file:  tests/glitch.mp4
         description: sdf
-        category: 22
+        category: 22 
         privacy: private
         tags:
             - shit
             - holy
 
-secrets_path: tests/user_secrets.json          # the path where is located your google secrets, see README for more
-credentials_path:  path/to/credentials.json    # where to store the refresh token and other credentials
+secrets_path: tests/client_secrets.json      # path for your google secrets
+credentials_path:  path/to/credentials.json  # where to store credentials
 
 ```
-then run the main module from inside this repository:
+Then run the main module from inside this repository:
 ```
 python -m youtube-video-upload tests/example.yaml
 ```
