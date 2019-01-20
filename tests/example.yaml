@@ -12,5 +12,4 @@ videos:
             - shit
             - holy
 
-credentials_path: tests/credentials.json
-escrets_path: tests/user_secrets.json
+secrets_path: tests/user_secrets.json
