@@ -10,7 +10,7 @@ from pathlib import Path
 
 def upload_from_options(options):
     """
-    config_path: |
+    secrets_path: |
         ...
 
     cresentials_path: |
@@ -44,8 +44,8 @@ def upload_from_options(options):
     elif 'config' in options:
         config = json.loads(options.config)
 
-    elif 'config_path' in options and Path(options.config_path).exists():
-        file = open(options.config_path, 'r')
+    elif 'secrets_path' in options and Path(options.secrets_path).exists():
+        file = open(options.secrets_path, 'r')
         config = json.load(file.read())
         file.close()
 
@@ -75,9 +75,9 @@ def save_credentials(creds, credentials_path):
 
     del creds_data['token']
 
-    config_path = os.path.dirname(credentials_path)
-    if not os.path.isdir(config_path):
-        os.makedirs(config_path)
+    secrets_path = os.path.dirname(credentials_path)
+    if not os.path.isdir(secrets_path):
+        os.makedirs(secrets_path)
 
     with open(credentials_path, 'w') as outfile:
         json.dump(creds_data, outfile)
