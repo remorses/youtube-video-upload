@@ -4,7 +4,6 @@ import os
 from .support import dotdict
 from .upload_video import upload_video
 from .get_credentials import get_credentials
-
 from google.oauth2.credentials import Credentials
 
 
@@ -48,6 +47,7 @@ def upload_from_options(options):
 
     if not credentials and config:
         credentials = get_credentials(config)
+        save_credentials(credentials, options.credentials_path or "./credentials.json")
     else:
         raise Exception('neither config or credentials')
 
@@ -65,22 +65,13 @@ def upload_from_options(options):
         except Exception as e:
             print(e)
 
-    save_credentials(credentials, options.credentials_path or "./credentials.json")
-
-    return credentials
+    return dump_credentials(credentials)
 
 
 
 def save_credentials(creds, credentials_path):
 
-    creds_data = {
-        'token': creds.token,
-        'refresh_token': creds.refresh_token,
-        'token_uri': creds.token_uri,
-        'client_id': creds.client_id,
-        'client_secret': creds.client_secret,
-        'scopes': creds.scopes
-    }
+    creds_data = dump_credentials(creds)
 
     del creds_data['token']
 
@@ -90,3 +81,15 @@ def save_credentials(creds, credentials_path):
 
     with open(credentials_path, 'w') as outfile:
         json.dump(creds_data, outfile)
+
+
+def dump_credentials(creds):
+    creds_data = {
+        'token': creds.token,
+        'refresh_token': creds.refresh_token,
+        'token_uri': creds.token_uri,
+        'client_id': creds.client_id,
+        'client_secret': creds.client_secret,
+        'scopes': creds.scopes
+    }
+    return creds_data
