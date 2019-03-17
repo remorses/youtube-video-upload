@@ -11,3 +11,5 @@ ls -1
 # -u $PYPIUSERNAME -p $PYPIPASSWORD
 
 python3 -m twine upload  dist/*
+
+git clean -fd
