@@ -16,6 +16,8 @@ SCOPES = ['https://www.googleapis.com/auth/youtube.upload']
 
 def upload_from_options(options):
     """
+    local_server: true
+
     secrets_path: |
         ...
 
@@ -37,7 +39,11 @@ def upload_from_options(options):
 
     credentials = {}
     secrets = {}
+    is_local = True
 
+    if 'local_server' in options:
+        is_local = options['local_server']
+        
     if 'credentials' in options:
         credentials = Credentials.from_authorized_user_info(json.loads(options.credentials))
 
@@ -55,7 +61,13 @@ def upload_from_options(options):
         secrets = json.loads(file.read())
         file.close()
 
-    secrets = secrets.get('installed')
+    if secrets.get('web'):
+        print('''Warning: you chose a wrong api auth type,
+        when creating a new ID client OAut
+        you have to choose `other` and not `web application` in google cloud console:
+        https://console.cloud.google.com/apis/credentials''')
+
+    secrets = secrets.get('installed') or secrets.get('web')
 
     if not credentials and secrets:
         # credentials = get_credentials(secrets)
@@ -63,7 +75,7 @@ def upload_from_options(options):
             SCOPES,
             client_id=secrets['client_id'],
             client_secret=secrets['client_secret'],
-            auth_local_webserver=True
+            auth_local_webserver=is_local
         )
         save_credentials(credentials, options.credentials_path or "./credentials.json")
 

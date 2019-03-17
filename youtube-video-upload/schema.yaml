@@ -1,0 +1,104 @@
+---
+definitions: {}
+"$schema": http://json-schema.org/draft-07/schema#
+"$id": http://example.com/root.json
+type: object
+title: The Root Schema
+required:
+  - local_server
+  - videos
+  - secrets_path
+  - credentials_path
+properties:
+    local_server:
+        "$id": "#/properties/local_server"
+        type: boolean
+        title: The Local_server Schema
+        default: false
+        examples:
+          - true
+    videos:
+        "$id": "#/properties/videos"
+        type: array
+        title: The Videos Schema
+        items:
+            "$id": "#/properties/videos/items"
+            type: object
+            title: The Items Schema
+            required:
+              - title
+              - file
+              - description
+              - category
+              - privacy
+              - tags
+            properties:
+                title:
+                    "$id": "#/properties/videos/items/properties/title"
+                    type: string
+                    title: The Title Schema
+                    default: ''
+                    examples:
+                      - testing this amazing script!
+                    pattern: "^(.*)$"
+                file:
+                    "$id": "#/properties/videos/items/properties/file"
+                    type: string
+                    title: The File Schema
+                    default: ''
+                    examples:
+                      - tests/video.mp4
+                    pattern: "^(.*)$"
+                description:
+                    "$id": "#/properties/videos/items/properties/description"
+                    type: string
+                    title: The Description Schema
+                    default: ''
+                    examples:
+                      - sdf
+                    pattern: "^(.*)$"
+                category:
+                    "$id": "#/properties/videos/items/properties/category"
+                    type: string
+                    title: The Category Schema
+                    default: ''
+                    examples:
+                      - Music
+                    pattern: "^(.*)$"
+                privacy:
+                    "$id": "#/properties/videos/items/properties/privacy"
+                    type: string
+                    title: The Privacy Schema
+                    default: ''
+                    examples:
+                      - private
+                    pattern: "^(.*)$"
+                tags:
+                    "$id": "#/properties/videos/items/properties/tags"
+                    type: array
+                    title: The Tags Schema
+                    items:
+                        "$id": "#/properties/videos/items/properties/tags/items"
+                        type: string
+                        title: The Items Schema
+                        default: ''
+                        examples:
+                          - holy
+                          - shit
+                        pattern: "^(.*)$"
+    secrets_path:
+        "$id": "#/properties/secrets_path"
+        type: string
+        title: The Secrets_path Schema
+        default: ''
+        examples:
+          - tests/client_secrets.json
+        pattern: "^(.*)$"
+    credentials_path:
+        "$id": "#/properties/credentials_path"
+        type: string
+        title: The Credentials_path Schema
+        default: ''
+        examples:
+          - tests/credentials.json
+        pattern: "^(.*)$"

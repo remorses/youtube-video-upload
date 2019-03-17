@@ -1,5 +1,6 @@
 
-
+local_server: true # use a local server instead of a url to get credentials
+                   # this is necessary when using this script from localhost
 
 videos:
     -
