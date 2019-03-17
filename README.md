@@ -6,7 +6,7 @@ Upload videos starting from a yaml file.
 
 Install dependencies, python-3.x is needed.
 ```
-pip install -U -r requirements.txt
+pip install youtube-video-upload
 ```
 
 To use this script you need a `client_secrets.json` to put in `secrets_path`.
