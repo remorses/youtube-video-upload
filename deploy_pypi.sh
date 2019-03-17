@@ -12,4 +12,4 @@ ls -1
 
 python3 -m twine upload  dist/*
 
-git clean -fd
+# git clean -fd
