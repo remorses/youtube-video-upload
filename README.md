@@ -52,12 +52,11 @@ secrets_path: tests/client_secrets.json      # path for your google secrets
 credentials_path:  path/to/credentials.json  # where to store credentials
 
 ```
-Then run the main module from inside this repository:
+Then execute:
 ```
-python -m youtube-video-upload tests/example.yaml
+pip install youtube-video-upload
+python -m youtube_video_upload tests/example.yaml
 ```
 If you run this script for the first time it will ask you to go to a url and copy paste a code to get the credentials.
 After that the script will store the credentials in `credentials_path` or default to `./credentials.json`.
 Using `credentials_path` the credentials will be created there even if that path doesn't exist.
-
-
