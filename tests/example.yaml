@@ -5,9 +5,9 @@ local_server: true # use a local server instead of a url to get credentials
 
 videos:
     -
-        title:       testing this amazing script!
+        title:       ima little bitch!
         file:        tests/video.mp4
-        description: sdf
+        description: esghere
         category:    Music
         privacy:     private
         tags:
