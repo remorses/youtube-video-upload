@@ -4,7 +4,7 @@ import os
 import requests
 from .support import dotdict
 from .upload_video import upload_video
-from .get_credentials import get_credentials
+# from .get_credentials import get_credentials
 from google.oauth2.credentials import Credentials
 from .get_category_number import get_category_number
 from colorama import init, Fore
@@ -43,7 +43,7 @@ def upload_from_options(options):
 
     if 'local_server' in options:
         is_local = options['local_server']
-        
+
     if 'credentials' in options:
         credentials = Credentials.from_authorized_user_info(json.loads(options.credentials))
 
