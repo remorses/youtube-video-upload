@@ -10,7 +10,9 @@ from .get_category_number import get_category_number
 from colorama import init, Fore
 from pathlib import Path
 from random import random
+from .auth import default
 
+SCOPES = ['https://www.googleapis.com/auth/youtube.upload']
 
 def upload_from_options(options):
     """
@@ -33,8 +35,8 @@ def upload_from_options(options):
     """
     options = dotdict(**options)
 
-    credentials = None
-    secrets = None
+    credentials = {}
+    secrets = {}
 
     if 'credentials' in options:
         credentials = Credentials.from_authorized_user_info(json.loads(options.credentials))
@@ -53,8 +55,16 @@ def upload_from_options(options):
         secrets = json.loads(file.read())
         file.close()
 
+    secrets = secrets.get('installed')
+
     if not credentials and secrets:
-        credentials = get_credentials(secrets)
+        # credentials = get_credentials(secrets)
+        credentials, _= default(
+            SCOPES,
+            client_id=secrets['client_id'],
+            client_secret=secrets['client_secret'],
+            auth_local_webserver=True
+        )
         save_credentials(credentials, options.credentials_path or "./credentials.json")
 
     elif not credentials and not secrets:
