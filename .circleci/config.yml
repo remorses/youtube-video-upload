@@ -1,0 +1,12 @@
+
+
+version: 2
+
+jobs:
+     deploy:
+          docker:
+            - image: xmorse/deploy-pypi
+          steps:
+            - checkout
+            - run: USERNAME=$PYPI_USERNAME PASSWORD=$PYPI_PASSWORD /deploy
+            
