@@ -3,6 +3,13 @@
 version: 2
 
 jobs:
+     bump_version:
+          docker:
+            - image: xmorse/bump-version
+          environment:
+            - REPOSITORY: remorses/youtube-video-upload
+          steps:
+            - run: GITHUB_TOKEN=$GITHUB_TOKEN /bump 
      deploy:
           docker:
             - image: xmorse/deploy-pypi
