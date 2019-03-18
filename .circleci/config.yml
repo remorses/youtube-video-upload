@@ -9,6 +9,7 @@ jobs:
           environment:
             - REPOSITORY: remorses/youtube-video-upload
           steps:
+            - checkout
             - run: GITHUB_TOKEN=$GITHUB_TOKEN /bump 
      deploy:
           docker:
