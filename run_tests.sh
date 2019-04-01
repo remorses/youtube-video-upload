@@ -1,2 +1,2 @@
 
-python -m youtube-video-upload tests/example.yaml
+python -m youtube_video_upload tests/example.yaml
