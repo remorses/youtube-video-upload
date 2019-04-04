@@ -94,7 +94,7 @@ def upload_from_options(options):
             video_options['file'] = temp_file
 
         try:
-            upload_video(
+            link = upload_video(
                 credentials,
                 **video_options
             )
@@ -108,7 +108,7 @@ def upload_from_options(options):
             if 'temp_file' in vars() and temp_file:
                 Path(temp_file).unlink()
 
-    return dump_credentials(credentials)
+    return link
 
 def download_video(url, file_path):
         response = requests.get(url, stream=True)

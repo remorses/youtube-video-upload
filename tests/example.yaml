@@ -6,7 +6,7 @@ local_server: true # use a local server instead of a url to get credentials
 videos:
     -
         title:       ima little bitch!
-        file:        /Users/morse/test.m2ts
+        file:        tests/video.mp4
         description: esghere
         category:    Music
         privacy:     private
