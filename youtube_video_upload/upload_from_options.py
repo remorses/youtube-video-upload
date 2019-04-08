@@ -93,6 +93,8 @@ def upload_from_options(options):
             temp_file = download_video(url, temp_file,)
             video_options['file'] = temp_file
 
+        link = None
+
         try:
             link = upload_video(
                 credentials,
