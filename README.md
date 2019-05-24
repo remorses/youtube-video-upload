@@ -2,6 +2,25 @@
 
 Upload videos starting from a yaml file.
 
+## Usage
+
+To access the youtube api you will need the `secrets` downloaded from the google developers console, then you will be able to create the `credentials` to authorize your requests. For choosing where to store the newly created credentials put a path in `secrets_path` in the yaml file.
+To upload the video in `tests/glitch.mp4` simply write a yaml file like this in `tests/example.yaml`:
+```yaml
+videos:
+    -
+        title: testing this amazing script!
+        file:  tests/video.mp4
+        description: sdf
+        category: Music
+        privacy: private
+        tags:
+            - shit
+            - holy
+
+secrets_path: tests/client_secrets.json      # path for your google secrets
+credentials_path:  path/to/credentials.json  # where to store credentials
+
 ## Setup
 
 Install dependencies, python-3.x is needed.
@@ -32,24 +51,6 @@ Then you will be able to download a file with content similar to this:
 ```
 Store that file somewhere and update `secrets_path`.
 
-## Usage
-
-To access the youtube api you will need the `secrets` downloaded from the google developers console, then you will be able to create the `credentials` to authorize your requests. For choosing where to store the newly created credentials put a path in `secrets_path` in the yaml file.
-To upload the video in `tests/glitch.mp4` simply write a yaml file like this in `tests/example.yaml`:
-```yaml
-videos:
-    -
-        title: testing this amazing script!
-        file:  tests/video.mp4
-        description: sdf
-        category: Music
-        privacy: private
-        tags:
-            - shit
-            - holy
-
-secrets_path: tests/client_secrets.json      # path for your google secrets
-credentials_path:  path/to/credentials.json  # where to store credentials
 
 ```
 Then execute:
