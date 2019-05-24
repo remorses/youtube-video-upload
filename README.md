@@ -20,6 +20,7 @@ videos:
 
 secrets_path: tests/client_secrets.json      # path for your google secrets
 credentials_path:  path/to/credentials.json  # where to store credentials
+```
 
 ## Setup
 
@@ -51,8 +52,6 @@ Then you will be able to download a file with content similar to this:
 ```
 Store that file somewhere and update `secrets_path`.
 
-
-```
 Then execute:
 ```
 pip install youtube-video-upload
